@@ -22,7 +22,15 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <button class="btn btn-outline-success" type="submit">Login</button>
+          {% if user.is_authenticated %}
+
+          <button class="btn btn-outline-danger" formaction="{% url 'logout' %}" type="submit">Logout</button>
+
+          {% else %}
+
+          <button class="btn btn-outline-success" formaction="{% url 'login' %}" type="submit">Login</button>
+
+          {% endif %}
         </form>
       </div>
     </div>

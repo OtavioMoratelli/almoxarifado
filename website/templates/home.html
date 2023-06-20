@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
 <table class="table">
     <thead>
       <tr>
@@ -22,5 +23,8 @@
       {% endfor %}
     </tbody>
 </table>
+{% endif %}
+
+
 
 {% endblock %}
