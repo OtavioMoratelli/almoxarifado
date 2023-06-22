@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<table class="table">
-    <thead>
+<h1>Itens disponíveis no almoxarifado</h1>
+<br>
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Item</th>
         <th scope="col">Quantidade</th>
         <th scope="col">Codigo do item</th>
@@ -13,7 +14,6 @@
     <tbody>
       {% for item in queryResult %}
       <tr>
-        <th scope="row">Num</th>
         <td>{{ item.nome }}</td>
         <td>{{ item.quantidade }}</td>
         <td>{{ item.cod_item }}</td>
@@ -21,4 +21,6 @@
       {% endfor %}
     </tbody>
 </table>
+<br/>
+<button type="submit" class="btn btn-secondary">Novo emprestimo</button>
 {% endblock %}

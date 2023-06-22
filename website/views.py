@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import Item
+from .models import Item, HistoricoEmprestimo
 
 def home(request):
     return render(request, 'home.html', {})
@@ -25,9 +25,19 @@ def logout_user(request):
     return redirect('home') 
 
 def itens_emp(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Erro, você não está cadastrado")
+        return redirect('login')
+    
     queryResult = Item.objects.all();
 
     return render(request, 'itens.html', {'queryResult':queryResult})
 
 def emprestimos(request):
-    pass
+    if not request.user.is_authenticated:
+        messages.error(request, "Erro, você não está cadastrado")
+        return redirect('login')
+    
+    queryEmprestimo = HistoricoEmprestimo.objects.all();
+
+    return render(request, 'emprestimos.html', {'queryEmprestimo' : queryEmprestimo})

@@ -1,21 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="col-md-6 offsetmd-3">
 <form method="POST" action="{% url 'login' %}">
     {% csrf_token%}
-    <br>
+    
+    <br/>
+    <h1>Login</h1>
+    <br/>
     <form>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Endereço de Email</label>
+      <label for="exampleInputEmail1" class="form-label"></label>
       <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp", name="username", placeholder="Nome de usuário" required>
     </div>
+    
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Senha</label>
+      <label for="exampleInputPassword1" class="form-label"></label>
       <input type="password" class="form-control" id="exampleInputPassword1", name="password", placeholder="Senha" required>
     </div>
+    <br/>
     <button type="submit" class="btn btn-primary">Entrar</button>
     </form>
 </form>
-
+</div>
 {% endblock %}
