@@ -4,10 +4,7 @@ from django.contrib import messages
 from .models import Item
 
 def home(request):
-    
-    queryResult = Item.objects.all();
-
-    return render(request, 'home.html', {'queryResult':queryResult})
+    return render(request, 'home.html', {})
 
 def login_user(request):
     if request.method == 'POST':
@@ -26,3 +23,11 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('home') 
+
+def itens_emp(request):
+    queryResult = Item.objects.all();
+
+    return render(request, 'itens.html', {'queryResult':queryResult})
+
+def emprestimos(request):
+    pass

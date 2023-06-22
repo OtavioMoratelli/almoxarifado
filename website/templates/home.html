@@ -3,28 +3,12 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Item</th>
-        <th scope="col">Quantidade</th>
-        <th scope="col">Codigo do item</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in queryResult %}
-      <tr>
-        <th scope="row">Num</th>
-        <td>{{ item.nome }}</td>
-        <td>{{ item.quantidade }}</td>
-        <td>{{ item.cod_item }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-</table>
+<h1>Bem vindo ao sistema do almoxarifado UFSC - ARA</h1>
+<br>
+{% else %}
+<h1>Bem vindo ao sistema do almoxarifado UFSC - ARA</h1>
+<br>
+<h1>Faça login para usar o sistema</h1>
 {% endif %}
-
-
 
 {% endblock %}
