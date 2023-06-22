@@ -29,7 +29,7 @@ class HistoricoEmprestimo(models.Model):
     data = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     quantidade = models.IntegerField(blank=True, null=True)
     def __str__(self):
-        return(f"({self.item} {self.quantidade} {self.id_histemp} {self.data})")
+        return(f"({self.item} {self.quantidade} {self.id_consumidor} {self.data})")
 
 class HistoricoConsumo(models.Model):
     id_histcons = models.AutoField(db_column='id_histCons', primary_key=True)

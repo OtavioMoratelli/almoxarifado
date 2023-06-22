@@ -41,3 +41,8 @@ def emprestimos(request):
     queryEmprestimo = HistoricoEmprestimo.objects.all();
 
     return render(request, 'emprestimos.html', {'queryEmprestimo' : queryEmprestimo})
+
+def novoEmprestimo(request):
+
+
+    return render(request, 'novo_emprestimo.html', {})
