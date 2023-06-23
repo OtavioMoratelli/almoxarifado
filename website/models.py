@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Item(models.Model):
     id_item = models.AutoField(primary_key=True)
@@ -9,10 +10,13 @@ class Item(models.Model):
         return(f"({self.nome} {self.quantidade} {self.cod_item})")
 
 class Consumidor(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     id_consumidor = models.AutoField(primary_key=True)
     id_pessoa = models.CharField(unique= True,max_length=100, blank=True, null=True)
     email = models.CharField(unique= True,max_length=100, blank=True, null=True)
     nome = models.CharField(max_length=100, blank=True, null=True)
+    def __str__(self):
+        return (f"({self.user})")
 
 class Funcionario(models.Model):
     id_funcionario = models.AutoField(primary_key=True)
@@ -23,8 +27,7 @@ class Funcionario(models.Model):
 
 class HistoricoEmprestimo(models.Model):
     id_histemp = models.AutoField(db_column='id_histEmp', primary_key=True)  
-    id_consumidor = models.ForeignKey('Consumidor', models.DO_NOTHING, db_column='id_consumidor', blank=True, null=True)
-    id_funcionario = models.ForeignKey('Funcionario', models.DO_NOTHING, db_column='id_funcionario', blank=True, null=True)
+    id_consumidor = models.ForeignKey('Consumidor', models.DO_NOTHING, db_column='id_pessoa', blank=True, null=True)
     id_item = models.ForeignKey('Item', models.DO_NOTHING, db_column='id_item', blank=True, null=True)
     data = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     quantidade = models.IntegerField(blank=True, null=True)

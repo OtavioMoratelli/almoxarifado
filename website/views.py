@@ -38,7 +38,7 @@ def emprestimos(request):
         messages.error(request, "Erro, você não está cadastrado")
         return redirect('login')
     
-    queryEmprestimo = HistoricoEmprestimo.objects.all();
+    queryEmprestimo = HistoricoEmprestimo.objects.filter(id_consumidor = request.user.consumidor.id_pessoa);
 
     return render(request, 'emprestimos.html', {'queryEmprestimo' : queryEmprestimo})
 

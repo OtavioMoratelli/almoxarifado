@@ -17,7 +17,7 @@
     <tbody>
       {% for emp in queryEmprestimo %}
       <tr>
-        <td>{{ emp.Item }}</td>
+        <td>{{ emp.Item.name }}</td>
         <td>{{ emp.quantidade }}</td>
         <td>{{ emp.data }}</td>
       </tr>
